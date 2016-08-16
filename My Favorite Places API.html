@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Roadtrip</title>
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>My Senior Year Roadtrip</h3>
+    <p> This map represents my dream roadtrip all the way to San Francisco, California. I put various hotels for every two states that we would pass through and included someplaces to eat and fun atttractions to go with my frends. I took some of the best attractions in the states that we would pass through during our journey in order to find the hotels closest to all the fun. </p>
+
+
+    <div id='map'></div>
+    <script>
+
+      function initMap() {
+
+        var myLatLng = {lat: 40.963735, lng:-73.786578};
+        var carLatLng = {lat: 40.913196, lng: -73.777322};
+        var shrimpLatLng = {lat: 39.031414, lng: -76.685277};
+        var hotel1LatLng = {lat:37.543045, lng: -77.436625}
+        var aquariumLatLng = {lat: 39.284825, lng: -76.607142};
+        var cavernLatLng = {lat:38.201421, lng:-85.704094};
+        var cafeLatLng = {lat:38.212091, lng: -85.588324};
+        var mapDiv = document.getElementById('map');
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+        	zoom: 16
+        });
+
+        var hotels = [
+          ['Richmond Marriott', 39.284825, -76.607142, 1],
+          ['Louisville Marriott Downtown', 38.253162, -85.754743, 2],
+          ['Nashville Airport Marriott', 36.146110, -86.692758, 3],
+          ['TownePlace Suites Lawrence Downtown',38.967094, -95.234367, 4],
+          ['SpringHill Suites Pueblo Downtown',38.266568,-104.606008, 5],
+          ['Palms Place Hotel and Spa',36.114357,-115.196570, 6],
+          ['Hotel Bijou', 37.784494, -122.409602, 7],
+        ];
+
+        var hotel_image = {
+          url: 'http://www.december.com/market/images/hotel.gif',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+
+        for (var i = 0; i < hotels.length; i++) {
+          var hotel = hotels[i];
+          var hotel_marker = new google.maps.Marker({
+              position: {lat:hotel[1], lng: hotel[2]},
+              map: map,
+              icon: hotel_image,
+              title: hotel[0]
+
+          });
+        }
+
+        var iconBase = {
+          url:'https://www.bayada.com/images/social/home.png',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var home_marker = new google.maps.Marker({
+        	 position: myLatLng,
+        	 map: map,
+        	 icon: iconBase
+          });
+         home_marker.setMap(map)
+        var car_icon = {
+          url:'https://s-media-cache-ak0.pinimg.com/avatars/dalamanrent_1447419544_30.jpg',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var car_marker = new google.maps.Marker({
+            position: carLatLng,
+            map: map,
+            icon: car_icon
+          });
+        var shrimp_icon = {
+          url: 'http://findicons.com/files/icons/2579/iphone_icons/40/shrimp.png',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var shrimp_marker = new google.maps.Marker({
+            position: shrimpLatLng,
+            map: map,
+            icon: shrimp_icon
+          });
+        var aquarium_icon = {
+          url: 'https://lh3.googleusercontent.com/-iYsnqcMplxk/AAAAAAAAAAI/AAAAAAAAUAE/mExXAvME-7c/s46-c-k-no/photo.jpg',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var aquarium_marker = new google.maps.Marker({
+            position: aquariumLatLng,
+            map: map,
+            icon: aquarium_icon
+          });
+        var cavern_icon = {
+          url: 'http://www.kootenaycompass.com/assets/img/markers/sports-zipline.png',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var cavern_marker = new google.maps.Marker({
+            position: cavernLatLng,
+            map: map,
+            icon: cavern_icon
+          });
+        var cafe_icon = {
+          url: 'http://66.media.tumblr.com/avatar_75b0e1f773c3_40.png',
+          size: new google.maps.Size(35,35),
+          origin: new google.maps.Point(0,0)
+        };
+          var cafe_marker = new google.maps.Marker({
+            position: cafeLatLng,
+            map: map,
+            icon: cafe_icon
+          });
+
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+  </body>
+</html>
